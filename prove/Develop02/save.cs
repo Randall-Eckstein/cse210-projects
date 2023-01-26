@@ -2,26 +2,54 @@ using System.IO;
 
 namespace Develop02
 {
-    public class Save
+    public class SaveLoad
     {
-        public void save(string prompt, string content)
+        public void SaveEntries()
         {
-            Console.Write($"Current filename is {Program.filename}\n\tDo you wish to continue using this? Y/N: ");
-            string choice = Console.ReadLine();
-            if (char.ToLower(choice[0]) == 'n')
+            bool saveFile = false;
+            while (!saveFile)
             {
-                Load load = new Load();
-                Program.filename = load.load();
+                Console.Write($"Current filename is {Program.filename}\n\tDo you wish to continue using this? Y/N: ");
+                string choice = Console.ReadLine();
+                try 
+                {
+                    if (char.ToLower(choice[0]) == 'n')
+                    {
+                        Load load = new Load();
+                        Program.filename = this.LoadEntries();
+                    }
+                    saveFile = true;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Sorry, please choose Y or N.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
             
-
-            DateTime date = DateTime.Now;
             using (StreamWriter newFile = new StreamWriter(Program.filename, true))
             {
-                newFile.WriteLine($"Date: {date.ToShortDateString()} - Prompt: {prompt}");
-                newFile.WriteLine(content);
-                newFile.WriteLine();
+                foreach (Entry entry in Program.entries){
+                    newFile.WriteLine($"{entry._date} - {entry._prompt}");
+                    newFile.WriteLine(entry._response);
+                    newFile.WriteLine();
+                };
+
+                Program.entries.Clear();
             }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Save complete.\n");
+            Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public string LoadEntries()
+        {
+            Console.Write("What filename would you like to use? ");
+            string file = Console.ReadLine();
+            return $"D://{file}.txt";
+        }
+
     }
 }
