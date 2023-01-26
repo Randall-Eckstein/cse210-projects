@@ -15,7 +15,6 @@ namespace Develop02
                 {
                     if (char.ToLower(choice[0]) == 'n')
                     {
-                        Load load = new Load();
                         Program.filename = this.LoadEntries();
                     }
                     saveFile = true;
