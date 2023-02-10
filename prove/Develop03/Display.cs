@@ -56,7 +56,7 @@ namespace Develop03
             {
                 concatenatedList += $"{item} ";
             }
-            Console.WriteLine($"\n{ScriptureList.verse}\n{concatenatedList}");
+            Console.WriteLine($"\n{Reference.verse}\n{concatenatedList}");
         }
 
         // parses the first or second index of each string in the list of words.
@@ -74,7 +74,8 @@ namespace Develop03
             }
             if (unmodifiedWords <= 0)
             {
-                Console.WriteLine("This scripture has been completed.");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Congratulations!  This scripture has been completed.\n\n");
                 return 0;
             }
             return unmodifiedWords;

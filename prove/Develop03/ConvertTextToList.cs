@@ -6,7 +6,7 @@ namespace Develop03
 
         public ConvertTextToList()
         {
-            textList = ScriptureList.scripture.Split(" ").ToList<string>();
+            textList = Reference.scripture.Split(" ").ToList<string>();
         }
     }
 }
