@@ -50,6 +50,7 @@ class Program
 
                 default:
                     Console.WriteLine("Sorry, that is not a valid choice.\n");
+                    Thread.Sleep(500);
                 break;
             }
             Console.Clear();
