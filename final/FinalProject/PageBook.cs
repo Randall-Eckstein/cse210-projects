@@ -11,7 +11,7 @@ namespace FinalProject
             this.CreateRecord();
         }
 
-        public PageBook(string author, string genre, string title, int yearPublished, int totalPages, int completedPages, string date) : base(author, genre, title, yearPublished, date)
+        public PageBook(string author, string title, int yearPublished, string genre, string date, int totalPages, int completedPages) : base(author, title, yearPublished, genre, date)
         {
             this._totalPages = totalPages;
             this._completedPages = completedPages;
@@ -54,8 +54,7 @@ namespace FinalProject
             else
             {
                 this.SetCompleteString();
-                int daysToComplete = (DateTime.Now - this.GetDate()).Days;
-                this.SetDaysToComplete(daysToComplete);
+                string daysToComplete = this.SetDaysToComplete();
                 string title = this.GetTitle();
                 string author = this.GetAuthor();
                 this.CompleteMessage(daysToComplete);

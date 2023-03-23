@@ -11,7 +11,7 @@ namespace FinalProject
             this.CreateRecord();
         }
 
-        public ChapterBook(string author, string genre, string title, int yearPublished, int totalChapters, int completedChapters, string date) : base(author, genre, title, yearPublished, date)
+        public ChapterBook(string author, string title, int yearPublished, string genre, string date, int totalChapters, int completedChapters) : base(author, title, yearPublished, genre, date)
         {
             this._totalChapters = totalChapters;
             this._completedChapters = completedChapters;
@@ -54,8 +54,7 @@ namespace FinalProject
             else
             {
                 this.SetCompleteString();
-                int daysToComplete = (DateTime.Now - this.GetDate()).Days;
-                this.SetDaysToComplete(daysToComplete);
+                string daysToComplete = this.SetDaysToComplete();
                 this.CompleteMessage(daysToComplete);
                 Console.WriteLine();
             }

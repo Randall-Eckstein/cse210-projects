@@ -8,6 +8,7 @@ namespace FinalProject
         private string _complete = "[ ]";
         private DateTime _date;
         private string _daysToComplete = "";
+        private string _genre;
 
         public Media()
         {
@@ -15,11 +16,12 @@ namespace FinalProject
             Console.WriteLine(_date);
         }
 
-        public Media(string title, int yearPublished, string date)
+        public Media(string title, int yearPublished, string genre, string date)
         {
             this._title = title;
             this._yearPublished = yearPublished;
             this._date = DateTime.Parse(date);
+            this._genre = genre;
         }
 
 #region SharedFunctions
@@ -65,9 +67,21 @@ namespace FinalProject
             return this._daysToComplete;
         }
 
-        public void SetDaysToComplete(int days)
+        public string SetDaysToComplete()
         {
-            this._daysToComplete = $" - {days.ToString()} days";
+            string days = (DateTime.Now - this.GetDate()).Days.ToString();
+            this._daysToComplete = $" - {days} days";
+            return days;
+        }
+
+        public string GetGenre()
+        {
+            return this._genre;
+        }
+
+        public void SetGenre(string genre)
+        {
+            this._genre = genre;
         }
 #endregion
 
@@ -76,7 +90,7 @@ namespace FinalProject
         // Abstract Functions
         public abstract void CreateRecord();
         public abstract void UpdateRecord();
-        public abstract void DisplayRecord();
+        public abstract string DisplayRecord();
 #endregion
     }
 }

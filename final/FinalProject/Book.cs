@@ -3,17 +3,15 @@ namespace FinalProject
     public abstract class Book : Media
     {
         private string _author;
-        private string _genre;
 
         public Book()
         {
 
         }
 
-        public Book(string author, string genre, string title, int yearPublished, string date) : base(title, yearPublished, date)
+        public Book(string author, string title, int yearPublished, string genre, string date) : base(title, yearPublished, genre, date)
         {
             this._author = author;
-            this._genre = genre;
         }
        
 #region SharedMethods
@@ -30,7 +28,7 @@ namespace FinalProject
             this.SetYear(int.Parse(Console.ReadLine()));
             
             Console.Write("What is the genre of this book: ");
-            this._genre = Console.ReadLine();
+            this.SetGenre(Console.ReadLine());
 
         }
 
@@ -39,17 +37,12 @@ namespace FinalProject
             return this._author;
         }
 
-        public string GetGenre()
+        public override string DisplayRecord()
         {
-            return this._genre;
+            return $"{this.GetCompleteString()} - {this.GetTitle()} by {this.GetAuthor()}{this.GetDaysToComplete()}";
         }
 
-        public override void DisplayRecord()
-        {
-            Console.WriteLine($"{this.GetCompleteString()} - {this.GetTitle()} by {this.GetAuthor()}{this.GetDaysToComplete()}");
-        }
-
-        public void CompleteMessage(int days)
+        public void CompleteMessage(string days)
         {
             Console.WriteLine($"Congratulations!  You finished {this.GetTitle()} by {this.GetAuthor()} in {days} days.");
 
