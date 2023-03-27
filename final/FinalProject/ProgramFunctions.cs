@@ -15,9 +15,10 @@ namespace FinalProject
 "\t2. Track a new Movie\n" +
 "\t3. Track a new Album\n" +
 "\t4. Update a Media Record\n" +
-"\t5. Load from file\n" +
-"\t6. Save to file\n" +
-"\t7. Quit\n" +
+"\t5. Display all media\n" +
+"\t6. Load from file\n" +
+"\t7. Save to file\n" +
+"\t8. Quit\n" +
 "What would you like to do today: ");
                 int choice = int.Parse(Console.ReadLine());
 
@@ -59,7 +60,9 @@ namespace FinalProject
                         foreach (Media entry in this._media)
                         {
                             Console.WriteLine($"{counter}. {entry.DisplayRecord()}");
+                            counter ++;
                         }
+                        Console.WriteLine();
                         bool canProceed = false;
                         int selection = 0;
                         while (!canProceed)
@@ -78,17 +81,26 @@ namespace FinalProject
                         }
                         this._media[selection].UpdateRecord();
                     break;
-                    
+
                     case 5:
-                        Console.WriteLine("Load Function Not Implemented");
+                        foreach (Media entry in this._media)
+                        {
+                            Console.WriteLine(entry.DisplayRecord());
+                        }
+                        Console.WriteLine();
                     break;
                     
                     case 6:
+                        Load load = new Load();
+                        this._media = load.GenerateList();
+                    break;
+                    
+                    case 7:
                         Save save1 = new Save(this._media);
                         save1.SaveEntries();
                     break;
                     
-                    case 7:
+                    case 8:
                         Console.WriteLine("Now quitting the media tracker.");
                         this.canContinue = false;
                     break;

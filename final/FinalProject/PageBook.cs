@@ -31,6 +31,7 @@ namespace FinalProject
             bool canContinue = false;
             while (!canContinue)
             {
+                Console.WriteLine($"You still have {this._totalPages - this._completedPages} pages to read.");
                 Console.Write("How many pages did you read: ");
                 try
                 {
@@ -43,7 +44,7 @@ namespace FinalProject
                 }
             }
 
-            this._completedPages = completed;
+            this._completedPages += completed;
 
             int difference = this._totalPages - this._completedPages;
 
@@ -64,10 +65,7 @@ namespace FinalProject
     
         public override void SaveRecord(StreamWriter output)
         {
-            // public PageBook(string author, string title, int yearPublished, string genre, string date, int totalPages, int completedPages) : base(author, title, yearPublished, genre, date)
-            // output.WriteLine($"Lifetime:{this.GetPointValue()}<+>{this.GetGoalName()}<+>{this.GetGoalDescription()}<+>{this.GetTimesCompleted()}");
-
-            throw new NotImplementedException();
+            output.WriteLine($"pageBook::{this.GetAuthor()}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}<+>{this._totalPages}<+>{this._completedPages}");
         }
     }
 }

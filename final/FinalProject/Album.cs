@@ -107,11 +107,11 @@ namespace FinalProject
             foreach (var track in this._tracks)
             {
                 string index = track.Key.ToString();
-                trackString += $"{track.Key.ToString()}||{track.Value[0]}+++{track.Value[1]}+++";
+                trackString += $"{track.Key.ToString()}+++{track.Value[0]}+++{track.Value[1]}||";
             }
-            trackString = trackString.Remove(trackString.Length - 3);
+            trackString = trackString.Remove(trackString.Length - 2);
             
-            output.WriteLine($"Album:{this._singer}<+>{trackString}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
+            output.WriteLine($"Album::{this._singer}<+>{trackString}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
         }
 
     }

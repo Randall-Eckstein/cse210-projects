@@ -9,7 +9,7 @@ namespace FinalProject
             this.SetLocation();
         }
 
-        private List<Media> GenerateList()
+        public List<Media> GenerateList()
         {
             List<Media> freshList = new List<Media>(); 
 
@@ -17,7 +17,7 @@ namespace FinalProject
 
             foreach (string line in lines)
             {
-                string[] breakdown = line.Split(":");
+                string[] breakdown = line.Split("::");
                 string type = breakdown[0];
                 string[] parts = breakdown[1].Split("<+>");
 
@@ -29,12 +29,24 @@ namespace FinalProject
                         freshList.Add(movie);
                     break;
                     case "Album":
-                        OrderedDictionary tempDict = new OrderedDictionary();
+                        Dictionary<int, List<string>> tempDict = new Dictionary<int, List<string>>();
                         string[] trackParts = parts[1].Split("||");
                         foreach (string entity in trackParts)
                         {
-
+                            string[] splitTrack = entity.Split("+++");
+                            tempDict.Add(int.Parse(splitTrack[0]), new List<string>() {splitTrack[1], splitTrack[2]});
                         }
+
+                        Album album = new Album(parts[0], tempDict, parts[2], int.Parse(parts[3]), parts[4], parts[5]);
+                        freshList.Add(album);
+                    break;
+                    case "pageBook":
+                        PageBook pageBook = new PageBook(parts[0], parts[1], int.Parse(parts[2]), parts[3], parts[4], int.Parse(parts[5]), int.Parse(parts[6]));
+                        freshList.Add(pageBook);
+                    break;
+                    case "chapterBook":
+                        ChapterBook chapterBook = new ChapterBook(parts[0], parts[1], int.Parse(parts[2]), parts[3], parts[4], int.Parse(parts[5]), int.Parse(parts[6]));
+                        freshList.Add(chapterBook);
                     break;
                     default:
                     break;

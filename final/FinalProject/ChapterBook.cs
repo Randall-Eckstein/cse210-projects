@@ -3,7 +3,7 @@ namespace FinalProject
     public class ChapterBook : Book
     {
         private int _totalChapters;
-        private int _completedChapters;
+        private int _completedChapters = 0;
 
         public ChapterBook()
         {
@@ -31,6 +31,7 @@ namespace FinalProject
             bool canContinue = false;
             while (!canContinue)
             {
+                Console.WriteLine($"You still have {this._totalChapters - this._completedChapters} chapters to read.");
                 Console.Write("How many chapters did you read: ");
                 try
                 {
@@ -43,7 +44,7 @@ namespace FinalProject
                 }
             }
 
-            this._completedChapters = completed;
+            this._completedChapters += completed;
 
             int difference = this._totalChapters - this._completedChapters;
 
@@ -62,10 +63,7 @@ namespace FinalProject
     
         public override void SaveRecord(StreamWriter output)
         {
-            // public ChapterBook(string author, string title, int yearPublished, string genre, string date, int totalChapters, int completedChapters) : base(author, title, yearPublished, genre, date)
-            // output.WriteLine($"Lifetime:{this.GetPointValue()}<+>{this.GetGoalName()}<+>{this.GetGoalDescription()}<+>{this.GetTimesCompleted()}");
-
-            throw new NotImplementedException();
+            output.WriteLine($"chapterBook::{this.GetAuthor()}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}<+>{this._totalChapters}<+>{this._completedChapters}");
         }
     }
 }

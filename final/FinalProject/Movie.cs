@@ -51,7 +51,7 @@ namespace FinalProject
 
         public override string DisplayRecord()
         {
-            return $"{this.GetCompleteString()} - {this.GetTitle()} directed by {this._director} starring {this._actors[0]}\n";
+            return $"{this.GetCompleteString()} - {this.GetTitle()} directed by {this._director} starring {this._actors[0]}";
         }
 
         public override void UpdateRecord()
@@ -69,7 +69,7 @@ namespace FinalProject
                 actorList += $"{actor}+++";
             }
             actorList = actorList.Remove(actorList.Length - 3);
-            output.WriteLine($"Movie:{this._director}<+>{actorList}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
+            output.WriteLine($"Movie::{this._director}<+>{actorList}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
         }
     }
 }
