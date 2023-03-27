@@ -84,7 +84,8 @@ namespace FinalProject
                     break;
                     
                     case 6:
-                        Console.WriteLine("Save Function Not Implemented");
+                        Save save1 = new Save(this._media);
+                        save1.SaveEntries();
                     break;
                     
                     case 7:

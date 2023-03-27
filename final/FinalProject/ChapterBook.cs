@@ -59,5 +59,13 @@ namespace FinalProject
                 Console.WriteLine();
             }
         }
+    
+        public override void SaveRecord(StreamWriter output)
+        {
+            // public ChapterBook(string author, string title, int yearPublished, string genre, string date, int totalChapters, int completedChapters) : base(author, title, yearPublished, genre, date)
+            // output.WriteLine($"Lifetime:{this.GetPointValue()}<+>{this.GetGoalName()}<+>{this.GetGoalDescription()}<+>{this.GetTimesCompleted()}");
+
+            throw new NotImplementedException();
+        }
     }
 }

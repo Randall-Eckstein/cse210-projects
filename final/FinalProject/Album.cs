@@ -97,5 +97,22 @@ namespace FinalProject
                 Console.WriteLine($"Congratulations!  You finished listening to {this.GetTitle()} by {this._singer} in {days} days.");
             }
         }
+    
+        public override void SaveRecord(StreamWriter output)
+        {
+            // public Album(string singer, Dictionary<int, List<string>> tracks, string title, int yearPublished, string genre, string date) : base(title, yearPublished, genre, date)
+            // output.WriteLine($"Lifetime:{this.GetPointValue()}<+>{this.GetGoalName()}<+>{this.GetGoalDescription()}<+>{this.GetTimesCompleted()}");
+
+            string trackString = "";
+            foreach (var track in this._tracks)
+            {
+                string index = track.Key.ToString();
+                trackString += $"{track.Key.ToString()}||{track.Value[0]}+++{track.Value[1]}+++";
+            }
+            trackString = trackString.Remove(trackString.Length - 3);
+            
+            output.WriteLine($"Album:{this._singer}<+>{trackString}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
+        }
+
     }
 }

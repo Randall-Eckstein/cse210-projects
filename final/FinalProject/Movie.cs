@@ -60,5 +60,16 @@ namespace FinalProject
             string days = this.SetDaysToComplete();
             Console.WriteLine($"Congratulations, you finished watching {this.GetTitle()} directed by {this._director} starring {this._actors[0]}\n");
         }
+
+        public override void SaveRecord(StreamWriter output)
+        {
+            string actorList = "";
+            foreach (string actor in this._actors)
+            {
+                actorList += $"{actor}+++";
+            }
+            actorList = actorList.Remove(actorList.Length - 3);
+            output.WriteLine($"Movie:{this._director}<+>{actorList}<+>{this.GetTitle()}<+>{this.GetYear()}<+>{this.GetGenre()}<+>{this.GetDate()}");
+        }
     }
 }

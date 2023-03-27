@@ -91,6 +91,7 @@ namespace FinalProject
         public abstract void CreateRecord();
         public abstract void UpdateRecord();
         public abstract string DisplayRecord();
+        public abstract void SaveRecord(StreamWriter output);
 #endregion
     }
 }
