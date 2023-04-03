@@ -10,6 +10,7 @@ namespace FinalProject
             Console.WriteLine("Welcome to the media tracker");
             while (canContinue)
             {
+                Console.WriteLine();
                 Console.Write(
 "\t1. Track a new Book\n" +
 "\t2. Track a new Movie\n" +
@@ -18,7 +19,8 @@ namespace FinalProject
 "\t5. Display all media\n" +
 "\t6. Load from file\n" +
 "\t7. Save to file\n" +
-"\t8. Quit\n" +
+"\t8. Sort Media\n" +
+"\t9. Quit\n" +
 "What would you like to do today: ");
                 int choice = int.Parse(Console.ReadLine());
 
@@ -101,6 +103,10 @@ namespace FinalProject
                     break;
                     
                     case 8:
+                        MediaSorter sorter = new MediaSorter(this._media);
+                    break;
+
+                    case 9:
                         Console.WriteLine("Now quitting the media tracker.");
                         this.canContinue = false;
                     break;

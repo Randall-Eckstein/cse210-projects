@@ -54,6 +54,16 @@ namespace FinalProject
             return $"{this.GetCompleteString()} - {this.GetTitle()} directed by {this._director} starring {this._actors[0]}";
         }
 
+        public string GetDirector()
+        {
+            return this._director;
+        }
+
+        public List<string> GetActors()
+        {
+            return this._actors;
+        }
+
         public override void UpdateRecord()
         {
             this.SetCompleteString();

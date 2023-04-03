@@ -67,6 +67,10 @@ namespace FinalProject
             }
         }
 
+        public string GetSinger()
+        {
+            return this._singer;
+        }
         public override void UpdateRecord()
         {
             for (int i = 1; i <= this._tracks.Count(); i++)
@@ -100,9 +104,6 @@ namespace FinalProject
     
         public override void SaveRecord(StreamWriter output)
         {
-            // public Album(string singer, Dictionary<int, List<string>> tracks, string title, int yearPublished, string genre, string date) : base(title, yearPublished, genre, date)
-            // output.WriteLine($"Lifetime:{this.GetPointValue()}<+>{this.GetGoalName()}<+>{this.GetGoalDescription()}<+>{this.GetTimesCompleted()}");
-
             string trackString = "";
             foreach (var track in this._tracks)
             {
